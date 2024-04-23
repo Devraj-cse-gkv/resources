@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logo Rotation</title>
+<style>
+  #logo, #logo-name {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc; /* Change this to your logo's background color */
+    border-radius: 50%; /* Assuming your logo is circular */
+    display: none;
+  }
+
+  .rotate-animation {
+    animation: rotateLogo 2s linear infinite;
+  }
+
+  @keyframes rotateLogo {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="logo" class="rotate-animation"></div>
+<div id="logo-name" class="rotate-animation"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initial delay to start the animation
+    setTimeout(function() {
+      toggleVisibility("logo");
+    }, 0);
+
+    // Toggle visibility and apply animation every 4 seconds
+    setInterval(function() {
+      toggleVisibility("logo");
+      setTimeout(function() {
+        toggleVisibility("logo-name");
+      }, 2000);
+    }, 4000);
+
+    function toggleVisibility(elementId) {
+      var element = document.getElementById(elementId);
+      if (element.style.display === "none") {
+        element.style.display = "block";
+      } else {
+        element.style.display = "none";
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
